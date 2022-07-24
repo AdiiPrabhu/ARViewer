@@ -1,0 +1,81 @@
+<html>
+  <head>
+        <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      />
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="./vendor/ar.js/aframe/build/aframe-ar.js"></script>
+    <script>
+      ARjs.Context.baseURL = "vendor/ar.js/three.js/";
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+    <style>
+        .menu {
+            position: fixed;
+            bottom: 0px;
+            z-index: 2;
+            width: 90%;
+            margin-left: 80px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false">
+      <a-assets>
+        <a-asset-item
+          id="android"
+          src="./models/android/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="astro"
+          src="./models/astro/Astronaut.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="robot"
+          src="./models/mech_drone/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="santa"
+          src="./models/santa/scene.gltf"
+        ></a-asset-item>
+      </a-assets>
+      <a-entity
+        camera
+        look-controls
+        id="cursor-container"
+        position="0 0 0"
+      >
+      </a-entity>
+      
+      <a-gltf-model
+        id="target"
+        cursor-listener
+        animation-mixer
+      >
+      <a-animation begin="start" end="stop" attribute="rotation" from="0 0 0" to="0 180 0" repeat="indefinite" dur="1000"></a-animation>
+      </a-gltf-model>
+    </a-scene>
+    <div class="btn-group btn-group-justified menu" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" onclick="showModel('android')">Android</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" onclick="showModel('astro')">Astronaut</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" onclick="showModel('robot')">Drone</button>
+            </div>
+            <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" onclick="showModel('santa')">Santa</button>
+                  </div>
+          </div>
+    <script src="./js/mapModel.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
